@@ -5,10 +5,10 @@ export const Statistics = ({ good, neutral, bad, percent }) => (
   <>
     <h2>Statistics</h2>
     <ul>
-      <li>Good: {good}</li>
-      <li>Neutral: {neutral}</li>
-      <li>Bad: {bad}</li>
-      <li>Positive feedback: {percent} %</li>
+      <li className={css.item}>Good: {good}</li>
+      <li className={css.item}>Neutral: {neutral}</li>
+      <li className={css.item}>Bad: {bad}</li>
+      <li className={css.item}>Positive feedback: {percent} %</li>
     </ul>
   </>
 );

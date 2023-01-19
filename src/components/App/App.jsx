@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import css from './App.module.css';
 import { Statistics } from 'components/Statisics/Statistics';
 
 export class App extends Component {
@@ -14,7 +13,6 @@ export class App extends Component {
       good: prevState.good + 1,
     }));
   };
-
 
   handleNeutral = () => {
     this.setState(prevState => ({
@@ -33,7 +31,7 @@ export class App extends Component {
   }
 
   countPositiveFeedbackPercentage() {
-    const { good, neutral, bad } = this.state;
+    const { good } = this.state;
     return Math.round((good / this.countTotalFeedback()) * 100);
   }
 
@@ -59,7 +57,6 @@ export class App extends Component {
           total={this.countTotalFeedback()}
           percent={total ? this.countPositiveFeedbackPercentage() : 0}
         />
-
       </div>
     );
   }
