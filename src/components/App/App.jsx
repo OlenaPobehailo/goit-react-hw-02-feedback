@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Statistics } from 'components/Statisics/Statistics';
+import { FeedbackOptions } from 'components/FeedbackOptions/FeedbackOptions ';
 
 export class App extends Component {
   state = {
@@ -40,16 +41,11 @@ export class App extends Component {
 
     return (
       <div className="Feedback">
-        <h1>Please leave feedback</h1>
-        <button type="button" onClick={this.handleGood}>
-          Good
-        </button>
-        <button type="button" onClick={this.handleNeutral}>
-          Neutral
-        </button>
-        <button type="button" onClick={this.handleBad}>
-          Bad
-        </button>
+        <FeedbackOptions
+          onHandleGood={this.handleGood}
+          onHandleNeutral={this.handleNeutral}
+          onHandleBad={this.handleBad}
+        />
         <Statistics
           good={this.state.good}
           neutral={this.state.neutral}
