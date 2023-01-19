@@ -1,20 +1,20 @@
-import css from './FeedbackOptions.module.css'
+import css from './FeedbackOptions.module.css';
+import PropTypes from 'prop-types';
 
-export const FeedbackOptions = ({
-  onHandleGood,
-  onHandleNeutral,
-  onHandleBad,
-}) => (
+export const FeedbackOptions = ({ options, onLeaveFeedback }) => (
   <>
-    <h1 className={css.title}>Please leave feedback</h1>
-    <button className={css.button} type="button" onClick={onHandleGood}>
-      Good
-    </button>
-    <button className={css.button} type="button" onClick={onHandleNeutral}>
-      Neutral
-    </button>
-    <button className={css.button} type="button" onClick={onHandleBad}>
-      Bad
+    <button
+      className={css.button}
+      type="button"
+      name={options}
+      onClick={onLeaveFeedback}
+    >
+      {options}
     </button>
   </>
 );
+
+FeedbackOptions.propTypes = {
+  options: PropTypes.string.isRequired,
+  onLeaveFeedback: PropTypes.func.isRequired,
+};
