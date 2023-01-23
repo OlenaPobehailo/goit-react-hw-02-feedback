@@ -77,8 +77,9 @@ export class App extends Component {
               total={this.countTotalFeedback()}
               percent={total ? this.countPositiveFeedbackPercentage() : 0}
             />
-          ) : null}
-          {total > 0 ? null : <Notification message="There is no feedback" />}
+          ) : (
+            <Notification message="There is no feedback" />
+          )}
         </Section>
       </div>
     );
