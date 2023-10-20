@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import Statistics from './Statistics';
+import FeedbackOptions from './FeedbackOptions';
 
 export class App extends Component {
   state = {
@@ -8,22 +9,33 @@ export class App extends Component {
     bad: 0,
   };
 
-  handleGood = () => {
-    this.setState(prevState => ({
-      good: prevState.good + 1,
-    }));
-  };
+  // handleGood = () => {
+  //   this.setState(prevState => ({
+  //     good: prevState.good + 1,
+  //   }));
+  // };
 
-  handleNeutral = () => {
-    this.setState(prevState => ({
-      neutral: prevState.neutral + 1,
-    }));
-  };
+  // handleNeutral = () => {
+  //   this.setState(prevState => ({
+  //     neutral: prevState.neutral + 1,
+  //   }));
+  // };
 
-  handleBad = () => {
-    this.setState(prevState => ({
-      bad: prevState.bad + 1,
-    }));
+  // handleBad = () => {
+  //   this.setState(prevState => ({
+  //     bad: prevState.bad + 1,
+  //   }));
+  // };
+
+  handleFeedback = event => {
+    const name = event.target.name;
+    console.log('name', name);
+
+    this.setState(prevState => {
+      return {
+        [name]: prevState[name] + 1,
+      };
+    });
   };
 
   countTotalFeedback() {
@@ -38,20 +50,28 @@ export class App extends Component {
 
   render() {
     let total = this.countTotalFeedback();
+    const options = Object.keys(this.state);
+    console.log(options);
 
     return (
       <>
         <div className="Feedback">
           <h1>Please leave feedback</h1>
-          <button type="button" onClick={this.handleGood}>
-            Good
-          </button>
-          <button type="button" onClick={this.handleNeutral}>
-            Neutral
-          </button>
-          <button type="button" onClick={this.handleBad}>
-            Bad
-          </button>
+
+          <FeedbackOptions
+            options="good"
+            onLeaveFeedback={this.handleFeedback}
+          />
+
+          <FeedbackOptions
+            options="neutral"
+            onLeaveFeedback={this.handleFeedback}
+          />
+
+          <FeedbackOptions
+            options="bad"
+            onLeaveFeedback={this.handleFeedback}
+          />
 
           <Statistics
             good={this.state.good}
