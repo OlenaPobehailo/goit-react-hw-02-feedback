@@ -5,6 +5,8 @@ import FeedbackOptions from './FeedbackOptions';
 import Section from './Section';
 import Notification from './Notification';
 
+import { StyledContainer } from './App.styled';
+
 export class App extends Component {
   state = {
     good: 0,
@@ -55,33 +57,31 @@ export class App extends Component {
     const options = Object.keys(this.state);
 
     return (
-      <>
-        <div className="Feedback">
-          <Section title="Please leave feedback">
-            {options.map(option => (
-              <FeedbackOptions
-                key={option}
-                options={option}
-                onLeaveFeedback={this.handleFeedback}
-              />
-            ))}
-          </Section>
+      <StyledContainer>
+        <Section title="Please leave feedback">
+          {options.map(option => (
+            <FeedbackOptions
+              key={option}
+              options={option}
+              onLeaveFeedback={this.handleFeedback}
+            />
+          ))}
+        </Section>
 
-          {total > 0 ? (
-            <Section title="Statistics">
-              <Statistics
-                good={this.state.good}
-                neutral={this.state.neutral}
-                bad={this.state.bad}
-                total={this.countTotalFeedback()}
-                percent={total ? this.countPositiveFeedbackPercentage() : 0}
-              />
-            </Section>
-          ) : (
-            <Notification message="There is no feedback" />
-          )}
-        </div>
-      </>
+        {total > 0 ? (
+          <Section title="Statistics">
+            <Statistics
+              good={this.state.good}
+              neutral={this.state.neutral}
+              bad={this.state.bad}
+              total={this.countTotalFeedback()}
+              percent={total ? this.countPositiveFeedbackPercentage() : 0}
+            />
+          </Section>
+        ) : (
+          <Notification message="There is no feedback" />
+        )}
+      </StyledContainer>
     );
   }
 }
