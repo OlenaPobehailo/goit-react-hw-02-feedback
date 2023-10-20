@@ -32,7 +32,6 @@ export class App extends Component {
 
   handleFeedback = event => {
     const name = event.target.name;
-    console.log('name', name);
 
     this.setState(prevState => {
       return {
@@ -54,26 +53,18 @@ export class App extends Component {
   render() {
     let total = this.countTotalFeedback();
     const options = Object.keys(this.state);
-    console.log(options);
 
     return (
       <>
         <div className="Feedback">
           <Section title="Please leave feedback">
-            <FeedbackOptions
-              options="good"
-              onLeaveFeedback={this.handleFeedback}
-            />
-
-            <FeedbackOptions
-              options="neutral"
-              onLeaveFeedback={this.handleFeedback}
-            />
-
-            <FeedbackOptions
-              options="bad"
-              onLeaveFeedback={this.handleFeedback}
-            />
+            {options.map(option => (
+              <FeedbackOptions
+                key={option}
+                options={option}
+                onLeaveFeedback={this.handleFeedback}
+              />
+            ))}
           </Section>
 
           {total > 0 ? (
