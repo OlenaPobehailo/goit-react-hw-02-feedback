@@ -2,9 +2,9 @@ import styled from 'styled-components';
 
 export const StyledLi = styled.li`
   color: ${props => {
-    if (props.percent >= 80) {
+    if (props.$percent >= 75) {
       return 'chartreuse';
-    } else if (props.percent >= 50) {
+    } else if (props.$percent >= 50) {
       return 'gold';
     } else {
       return 'red';

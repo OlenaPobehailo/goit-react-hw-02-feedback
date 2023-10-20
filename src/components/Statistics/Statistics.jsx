@@ -8,7 +8,7 @@ const Statistics = ({ good, neutral, bad, total, percent }) => {
       <li>Neutral: {neutral}</li>
       <li>Bad: {bad}</li>
       <li>Total: {total}</li>
-      <StyledLi percent={percent}>Positive feedback: {percent} %</StyledLi>
+      <StyledLi $percent={percent}>Positive feedback: {percent} %</StyledLi>
     </StyledList>
   );
 };
